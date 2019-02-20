@@ -6,10 +6,10 @@
 f = @(x) x^2;
 
 % Variable that determines the spacing of the points
-h = 2;
+h = 1;
 
 % Variable to keep track of the number of points that we want
-N = 5;
+N = 1000;
 
 
 % Two column vectors that store the points and their corresponding value as
@@ -17,18 +17,13 @@ N = 5;
 input = zeros(N,1);
 output = zeros(N,1);
 
-% populate a vector that stores the x values for evaluation
+% populate a vector that stores the x values for the function
 for it = 1: N
     %Since we are using 1 based counting, I decided to start wi
     if (it == 1)
         input(it,1) = it;
-    else
-        input(it,1) = input(it-1) + h;
     end
-end
-
-% populate a vector that stores all corresponding f(x) values for the
-% anonymous function
-for it = 1:N
-    output(it,1) = f(input(it,1));
+    input(it,1) = it + h;
+    
+    output(it,1) = f(input(it));
 end
