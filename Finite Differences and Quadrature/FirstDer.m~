@@ -1,0 +1,11 @@
+function result = FirstDer(x,y)
+
+% the spacing between points that we are sampling
+h = x(2,1) - x(1,1);
+
+% create a new vector to store the results of taking the first derivative
+% for different points
+result = zeros(length(y),1);
+
+
+end
