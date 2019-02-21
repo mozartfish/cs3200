@@ -7,26 +7,15 @@ syms x;
 %%  Create an anonymous function for collecting data
 f = @(x) x^2;
 
-% Variable that determines the spacing of the points
-h = 3;
-
 % Variable to keep track of the total number of points
 N = 5;
 
+%% Define a vector that contains a list of N evenly spaced points
+input = linspace(-1,1,N)';
 
-% Two column vectors that store the points and their corresponding value as
-% defined by the anonymous function
-input = zeros(N,1);
+%% A vector that stores all the outputs when the anonymous function 
+%% evaluates the points in the vector containing the evenly spaced points
 output = zeros(N,1);
-
-% populate a vector that stores the x values for evaluation
-for it = 1:N
-    if (it == 1)
-        input(it,1) = it;
-    else
-        input(it,1) = input(it-1) + h;
-    end
-end
 
 % populate a vector that stores all corresponding f(x) values for the
 % anonymous function
@@ -35,12 +24,3 @@ for it = 1:N
 end
 
 output = FirstDer(input,output);
-
-%% Now plot relative errors
-figure
-e2 = zeros(length(output),1);
-derivative = diff(f,x,1);
-for it=1:length(output)
-    e2(it,1) = norm(vpa(subs(derivative,x,input(it,1)))-output(it,1))/norm(output(it,1));
-end
-semilogy(N,e2);
