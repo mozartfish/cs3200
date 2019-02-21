@@ -39,7 +39,8 @@ output = FirstDer(input,output);
 %% Now plot relative errors
 figure
 e2 = zeros(length(output),1);
-derivative = diff(f,x,1);
+derivative = @(x) diff(f,x,1);
+diff(f,x,1)
 for it=1:length(output)
     e2(it,1) = norm(vpa(subs(derivative,x,input(it,1)))-output(it,1))/norm(output(it,1));
 end
