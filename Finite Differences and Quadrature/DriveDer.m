@@ -1,6 +1,9 @@
 syms x;
 
-%% The following code serves as a driver for the FirstDer function
+% The following code serves as a driver program for FirstDer and returns a
+% plot of the error between of the error between the actual derivative
+% evaluated at those points and the finite differences computed in FirstDer
+
 % Author: Pranav Rajan
 % Date: February 23, 2019
 

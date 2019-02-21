@@ -1,3 +1,11 @@
+% This code defines a function called FirstDer that takes a set of inputs
+% that represent coordinates on the x axis and a set of outputs that
+% represent some function f(x) evaluated at the inputs and computes the
+% derivative at those points using finite differences.
+
+%Author: Pranav Rajan
+%Date: February 21,2019
+
 function result = FirstDer(x,y)
 
 % the spacing between points that we are sampling
