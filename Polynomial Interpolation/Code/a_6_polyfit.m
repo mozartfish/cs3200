@@ -60,10 +60,10 @@ end
 
 %% Now plot relative errors
 figure
-e2 = zeros(length(result),1);
-derivative = diff(f,x,1);
-for it=1:length(result)
-    e2(it,1) = norm(vpa(subs(derivative,x,input(it,1)))-result(it,1))/norm(result(it,1));
+e2 = zeros(length(Nd),1);
+for it=1:length(Nd)
+    e2(it,1) = norm(ye_num(:,it)-ye)./norm(ye);
 end
-semilogy(N,e2);
+semilogy(Nd,e2);
+    
     
