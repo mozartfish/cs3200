@@ -8,7 +8,7 @@ syms x;
 % Date: February 21, 2019
 
 % An anonymous function for collecting data
-f = @(x) x.^2;
+f = @(x) sin(x);
 
 % Variables to keep track of the total number of points, starting point, and
 % ending point
