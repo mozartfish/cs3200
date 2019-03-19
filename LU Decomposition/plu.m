@@ -37,4 +37,6 @@ for i = 1: N-1
         U(j,i:N) = U(j,i:N) - L(j,i).*U(i,i:N);
     end
 end
+
+return
 end

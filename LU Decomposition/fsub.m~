@@ -1,6 +1,0 @@
-% This algorithm implements forward substitution
-% using the notes and algorithm given by Professor Varun Shankar
-% Author: Pranav Rajan
-% Date: March 18, 2019
-
-function y = 
