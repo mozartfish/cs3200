@@ -8,7 +8,7 @@ syms x;
 % Date: February 21, 2019
 
 % An anonymous function for collecting data
-f = @(x) sin(x);
+f = @(x) cos(x);
 
 % Variables to keep track of the total number of points, starting point, and
 % ending point
@@ -58,7 +58,7 @@ for i=3:N
      % corresponding point
      error(i-2,1) = y;
 end
-semilogy(3:N,error);
+loglog(3:N,error);
 
 
 
