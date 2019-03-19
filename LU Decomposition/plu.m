@@ -1,5 +1,5 @@
 % This algorithm implements LU decomposition with Partial Pivoting
-% using the algorithm given by Professor Varun Shankar
+% using the notes and algorithms given by Professor Varun Shankar
 % Author: Pranav Rajan
 % Date: March 18, 2019
 
