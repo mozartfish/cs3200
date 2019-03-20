@@ -3,7 +3,7 @@
 % Author: Pranav Rajan
 % Date: March 18, 2019
 
-function [L, U, P] = plu(A)
+function [L, U, P] = lup(A)
 
 % Initialize some stuff
 
@@ -17,7 +17,11 @@ P = eye(N, N);
 for i = 1:N-1
     % Find m >= i that results in maximum |U(m,i)| (index of largest column
     % element in absolute value)
-    [~,m] = max(abs(A(:,i)));
+    [~,m] = max(abs(A(i:N,i)));
+    
+    % Account for the offset since we are looking at all values below the
+    % diagonal
+    m = m + i-1;
     
     % Swap rows U(i,i:N) and U(m,i:N)
     temp = U(i,i:N);

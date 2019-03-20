@@ -9,9 +9,9 @@ function x = bsub(U, y)
 [~, N] = size(U);
 
 % Initialize X to a column vector of zeros
-x = zeros(n,1);
+x = zeros(N,1);
 
-x(N) = y(N) / U(N);
+x(N) = y(N)/U(N,N);
 
 for i = N-1:1
     x(i) = (y(i)-U(i,i+1:N))*x(i+1:N)/U(i,i);
