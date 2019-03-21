@@ -20,7 +20,8 @@ for i = 1:N-1
     [~,m] = max(abs(A(i:N,i)));
     
     % Account for the offset since we are looking at all values below the
-    % diagonal
+    % diagonal and need to account for all the values in the column in the
+    % matrix
     m = m + i-1;
     
     % Swap rows U(i,i:N) and U(m,i:N)
