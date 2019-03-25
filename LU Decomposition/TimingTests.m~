@@ -24,10 +24,8 @@ time_test2 = zeros(length(nrhs)',1);
 
 for i = 1:length(nrhs)
     
-    % Create a new B vector
-    B = rand(N, nrhs(i));
     % create vectors with N rows and i columns
-    X1 = zeros(N, nrhs(i));
+    X1 = zeros(N, nrhhs(i));
     X2 = zeros(N, nrhs(i));
     
     % Timing Test 1
@@ -38,7 +36,7 @@ for i = 1:length(nrhs)
     [L, U, P] = lup(A);
     
     % Solve the matrix
-    for j = 1:nrhs(i)
+    for j = 1:length(nrhs)
         X1(:, j) = bsub(U, fsub(L, P * B(:, j)));
     end
 
@@ -47,10 +45,12 @@ for i = 1:length(nrhs)
     
     % Timing Test 2
     tic
-        for j = 1:nrhs(i)
-             [L, U, P] = lup(A);
+    for k = 1:length(nrhs)
+        [L, U, P] = lup(A);
+        for j = 1:length(nrhs)
             X2(:, j) = bsub(U, fsub(L, P * B(:, j)));
         end
+    end
     
     % stop the timer
     time_test2(i) = toc;
@@ -58,9 +58,7 @@ end
 
 % plot stuff
 figure
-loglog(nrhs, time_test1);
-hold on;
-loglog(nrhs, time_test2);
+
 
 
 
