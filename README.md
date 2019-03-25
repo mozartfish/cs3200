@@ -1,2 +1,2 @@
 # cs3200
-Scientific Computing
+Scientific and Data Computing
