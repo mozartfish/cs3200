@@ -9,13 +9,13 @@ clc;
 
 % Define a value for N which will be used for determining the dimensions of
 % the N x N matrix
-N = 3;
+N = 20;
 
 % Initialize a random matrix A with N x N dimensions
 A = rand(N,N);
 
 % Define the number of rhs
-nrhs = 4;
+nrhs = 5;
 
 % Initialize a matrix B with the dimensions N x rhs
 B = rand(N,nrhs);
@@ -26,9 +26,17 @@ X = zeros(N, nrhs);
 % Call lup function exactly once
 [L, U, P] = lup(A);
 
-for i = 1:nrhs
-    X(:, i) = bsub(U, fsub(L, P * B(:, i)))
+for j = 1:nrhs
+    X(:, j) = bsub(U, fsub(L, P * B(:, j)));
 end
+
+% Compute the actual LUP decomposition using MATLAB built in functions
+X2 = A\B;
+
+% Compute the relative error
+relative_error = norm(X-X2)./(norm(X2))
+
+
 
 
 
