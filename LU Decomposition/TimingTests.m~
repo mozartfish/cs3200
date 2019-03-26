@@ -10,7 +10,7 @@ clc;
 
 % Define a value for N which will be used for determining the dimensions of
 % the N x N matrix
-N = 20;
+N = 60;
 
 % Initialize a random matrix A with N x N dimensions
 A = rand(N,N);
@@ -19,13 +19,16 @@ A = rand(N,N);
 nrhs = 1:N;
 
 % Define the time vectors 
-time_test1 = zeros(length(nrhs)',1);
-time_test2 = zeros(length(nrhs)',1);
+time_test1 = zeros(length(nrhs),1);
+time_test2 = zeros(length(nrhs),1);
 
 for i = 1:length(nrhs)
     
+    % Create a new B vector
+    B = rand(N, nrhs(i));
+    
     % create vectors with N rows and i columns
-    X1 = zeros(N, nrhhs(i));
+    X1 = zeros(N, nrhs(i));
     X2 = zeros(N, nrhs(i));
     
     % Timing Test 1
@@ -36,7 +39,7 @@ for i = 1:length(nrhs)
     [L, U, P] = lup(A);
     
     % Solve the matrix
-    for j = 1:length(nrhs)
+    for j = 1:nrhs(i)
         X1(:, j) = bsub(U, fsub(L, P * B(:, j)));
     end
 
@@ -44,13 +47,12 @@ for i = 1:length(nrhs)
     time_test1(i) = toc;
     
     % Timing Test 2
+    % start the timer
     tic
-    for k = 1:length(nrhs)
-        [L, U, P] = lup(A);
-        for j = 1:length(nrhs)
+        for j = 1:nrhs(i)
+             [L, U, P] = lup(A);
             X2(:, j) = bsub(U, fsub(L, P * B(:, j)));
         end
-    end
     
     % stop the timer
     time_test2(i) = toc;
@@ -58,7 +60,9 @@ end
 
 % plot stuff
 figure
-
+loglog(nrhs, time_test1);
+hold on;
+loglog(nrhs, time_test2);
 
 
 

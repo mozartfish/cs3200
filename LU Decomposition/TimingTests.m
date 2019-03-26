@@ -10,7 +10,7 @@ clc;
 
 % Define a value for N which will be used for determining the dimensions of
 % the N x N matrix
-N = 20;
+N = 60;
 
 % Initialize a random matrix A with N x N dimensions
 A = rand(N,N);
@@ -19,13 +19,14 @@ A = rand(N,N);
 nrhs = 1:N;
 
 % Define the time vectors 
-time_test1 = zeros(length(nrhs)',1);
-time_test2 = zeros(length(nrhs)',1);
+time_test1 = zeros(length(nrhs),1);
+time_test2 = zeros(length(nrhs),1);
 
 for i = 1:length(nrhs)
     
     % Create a new B vector
     B = rand(N, nrhs(i));
+    
     % create vectors with N rows and i columns
     X1 = zeros(N, nrhs(i));
     X2 = zeros(N, nrhs(i));
@@ -46,6 +47,7 @@ for i = 1:length(nrhs)
     time_test1(i) = toc;
     
     % Timing Test 2
+    % start the timer
     tic
         for j = 1:nrhs(i)
              [L, U, P] = lup(A);
