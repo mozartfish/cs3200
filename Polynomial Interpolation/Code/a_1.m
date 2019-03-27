@@ -52,7 +52,7 @@ for it=1:length(Nd)
     %% Plot stuff
     hold on;
     plot(xe,ye_num(:,it),'o');
-    drawnow
+    drawnow55
     pause
 end
 
