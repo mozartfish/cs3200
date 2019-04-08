@@ -8,7 +8,7 @@ f = @(x) sin(x) + 0.1*rand(length(x),1);
 Nd = 5;
 
 %% User defined polynomial degree l
-l = Nd - 1;
+l = 3;
 
 %% Setup the points at which we want to evaluate the interpolant
 xe = linspace(-1,1,1000)'; %generate evenly-spaced points
@@ -28,10 +28,11 @@ y = f(x);
     %V(:,vit) = x.^(vit-1);
 %end
 
-V = zeros(l, l);
+V = zeros(l,l);
 for vit = 1:l
-    V(:,vit) = x.^(vit - 1);
+    V(:,vit) = x.^(vit-1);
 end
+
 
 %% Compute coefficients by QR decomposition.
 a = V\y;
