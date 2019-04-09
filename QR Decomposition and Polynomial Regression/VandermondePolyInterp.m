@@ -28,7 +28,7 @@ y = f(x);
     %V(:,vit) = x.^(vit-1);
 %end
 
-V = zeros(l,l);
+V = zeros(Nd,l);
 for vit = 1:l
     V(:,vit) = x.^(vit-1);
 end
@@ -39,8 +39,14 @@ a = V\y;
 
 %% Evaluate polynomial interpolant by building eval matrix and
 %% multiplying with coefficients.
-Ve = zeros(length(xe),Nd);
-for vit = 1:Nd
+% Ve = zeros(length(xe),Nd);
+% for vit = 1:Nd
+%     Ve(:,vit) = xe.^(vit-1);
+% end
+% ye_num = Ve*a; %Do the matrix-vector product to predict values
+
+Ve = zeros(length(xe), l);
+for vit = 1:l
     Ve(:,vit) = xe.^(vit-1);
 end
 ye_num = Ve*a; %Do the matrix-vector product to predict values
