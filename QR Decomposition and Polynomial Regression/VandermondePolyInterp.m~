@@ -10,8 +10,7 @@ Nd = 5;
 %% User defined polynomial degree l
 l = 3;
 
-%% Define an N value based on the l
-N = l + 1;
+%% Define 
 
 %% Setup the points at which we want to evaluate the interpolant
 xe = linspace(-1,1,1000)'; %generate evenly-spaced points
