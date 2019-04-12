@@ -17,7 +17,7 @@ P = eye(N, N);
 for i = 1:N-1
     % Find m >= i that results in maximum |U(m,i)| (index of largest column
     % element in absolute value)
-    [~,m] = max(abs(A(i:N,i)));
+    [~,m] = max(abs(U(i:N,i)));
     
     % Account for the offset since we are looking at all values below the
     % diagonal
