@@ -38,12 +38,12 @@ end
 
 
 %% Compute the QR decomposition matrix Vector
-[Q, R] = qr(V);
+[Q1, R1] = qr(V, 0);
 
 %% Obtain Q1 and R1
-Q1 = Q(:, 1:N);
-R1 = R(1:N, 1:N);
-    
+% Q1 = Q(:, 1:N);
+% R1 = R(1:N, 1:N);
+%     
 
 %% Compute coefficients by QR decomposition.
 % a = V\y;
