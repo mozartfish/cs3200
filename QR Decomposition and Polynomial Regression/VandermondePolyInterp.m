@@ -5,10 +5,10 @@ clc;
 f = @(x) sin(x) + 0.1*rand(length(x),1);
 
 %% Numbers of data points.
-Nd = 5; % the M value
+Nd = 3; % the M value
 
 %% User defined polynomial degree l
-l = 3;
+l = 1;
 
 %% Define an N value based on the l
 N = l + 1;
@@ -46,7 +46,8 @@ R1 = R(1:N, 1:N);
     
 
 %% Compute coefficients by QR decomposition.
-a = V\y;
+% a = V\y;
+a = R1 \ (Q1' * y);
 
 %% Evaluate polynomial interpolant by building eval matrix and
 %% multiplying with coefficients.
