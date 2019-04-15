@@ -5,7 +5,7 @@ clc;
 f = @(x) sin(x) + 0.1*rand(length(x),1);
 
 %% Numbers of data points.
-Nd = 5;
+Nd = 5; % the M value
 
 %% User defined polynomial degree l
 l = 3;
@@ -31,14 +31,18 @@ y = f(x);
     %V(:,vit) = x.^(vit-1);
 %end
 
-V = zeros(Nd,l);
-for vit = 1:l
+V = zeros(Nd,N);
+for vit = 1:N 
     V(:,vit) = x.^(vit-1);
 end
 
 
 %% Compute the QR decomposition matrix Vector
-[Q, R] = qr(V)
+[Q, R] = qr(V);
+
+%% Obtain Q1 and R1
+Q1 = Q(:, 1:N);
+R1 = R(1:N, 1:N);
     
 
 %% Compute coefficients by QR decomposition.
@@ -52,8 +56,8 @@ a = V\y;
 % end
 % ye_num = Ve*a; %Do the matrix-vector product to predict values
 
-Ve = zeros(length(xe), l);
-for vit = 1:l
+Ve = zeros(length(xe), N);
+for vit = 1:N
     Ve(:,vit) = xe.^(vit-1);
 end
 ye_num = Ve*a; %Do the matrix-vector product to predict values
