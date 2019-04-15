@@ -5,10 +5,10 @@ clc;
 f = @(x) sin(x) + 0.1*rand(length(x),1);
 
 %% Numbers of data points.
-Nd = 40; % the M value
+Nd = 3; % the M value
 
 %% User defined polynomial degree l
-l = 2;
+l = Nd - 1;
 
 %% Define an N value based on the l
 N = l + 1;
